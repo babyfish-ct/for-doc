@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group 'org.doc.j'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
+}
+
+ext {
+    jimmerVersion = "0.7.65"
+}
+
+dependencies {
+    implementation "org.babyfish.jimmer:jimmer-sql:${jimmerVersion}"
+    annotationProcessor "org.babyfish.jimmer:jimmer-apt:${jimmerVersion}"
+
+    runtimeOnly 'com.h2database:h2:2.1.212'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
